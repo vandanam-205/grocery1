@@ -1,0 +1,48 @@
+{% include 'header.html' %}
+
+    <!--Hero Section-->
+    <div class="hero-section hero-background style-02">
+        <h1 class="page-title">show all categories</h1>
+        <nav class="biolife-nav">
+            <ul>
+                <li class="nav-item"><a href="index-2.html" class="permal-link">Home</a></li>
+                <li class="nav-item"><span class="current-page"></span></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Page Contain -->
+    <div class="page-contain blog-page">
+        <div class="container">
+            <!-- Main content -->
+            <div id="main-content" class="main-content">
+
+                <div class="row">
+                    <ul class="posts-list main-post-list">
+                        {% for i in data %}
+                            <li class="post-elem col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="post-item effect-04 style-bottom-info">
+                                    <div class="thumbnail">
+                                        <a href="{% url 'subcategorypage' i.id %}" class="link-to-post">
+                                            <img src="/media/{{i.catimage}}" width="370" height="270" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="post-content">
+                                        <h4 class="post-name"><a href="#" class="linktopost">{{i.catname}}</a></h4>
+                                        <div class="group-buttons">
+                                            <!-- Add buttons or any other content here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+             
+
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
