@@ -1,2 +1,2 @@
 # grocery1
-this is my project
+this is my grocery project in django
