@@ -22,7 +22,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index),
+    path('',views.index,name='index'),
     path('categorypage/',views.categorypage,name='categorypage'),
     path('contact/',views.contact),
     path('about-us/',views.about_us),
@@ -30,9 +30,10 @@ urlpatterns = [
     path('login/',views.login,name='login'),
     path('index2/',views.index2,name='index2'),
     path('subcategorypage/<int:pk>', views.subcategorypage, name='subcategorypage'),
-
+    path('productdetailpage/<int:pk>',views.productdetail,name='productdetailpage'),
     path('productpage/<int:pk>',views.productpage,name='productpage'),
-
+    path('addcart/',views.addcart,name='addcart'),
+    path('cartdata1/<int:pk>',views.cartdata1,name='cartdata1'),
 ]
 
 if settings.DEBUG:

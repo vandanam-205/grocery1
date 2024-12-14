@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class userregistration(models.Model):
-    username=models.CharField(max_length=50)
+    username=models.CharField(max_length=50,unique=True)
     email=models.EmailField()
     password=models.CharField(max_length=50)
     cpassword=models.CharField(max_length=50)
@@ -11,14 +11,14 @@ class userregistration(models.Model):
         return self.username
 
 
-class registration(models.Model):
-    username=models.CharField(max_length=50,null=False,blank=False)
-    email=models.EmailField(max_length=50,null=False,blank=False)
-    password=models.CharField(max_length=50,null=False,blank=False)
-    cpassword=models.CharField(max_length=50,null=False,blank=False)
+# class registration(models.Model):
+#     username=models.CharField(max_length=50,null=False,blank=False)
+#     email=models.EmailField(max_length=50,null=False,blank=False)
+#     password=models.CharField(max_length=50,null=False,blank=False)
+#     cpassword=models.CharField(max_length=50,null=False,blank=False)
 
-    def __str__(self):
-        return self.username
+#     def __str__(self):
+#         return self.username
     
 class category(models.Model):
     catname=models.CharField(max_length=50,null=False,blank=False)
@@ -44,4 +44,19 @@ class product(models.Model):
 
     def __str__(self):
         return self.productname
+    
+class product_unit(models.Model):
+    product=models.ForeignKey(product,on_delete=models.CASCADE)
+    unit=models.CharField(max_length=10,blank=False)
+    price=models.IntegerField()
+
+class cartdata(models.Model):
+    user=models.ForeignKey('userregistration',on_delete=models.CASCADE,default=None)
+    product=models.ForeignKey('product',on_delete=models.CASCADE)
+    productname=models.CharField(max_length=50,default=None)
+    productimage=models.FileField(default=None)
+    productprice=models.IntegerField()
+    quantity=models.ForeignKey('product_unit',on_delete=models.CASCADE)
+    totalprice=models.CharField(max_length=100,default=1)
+
 

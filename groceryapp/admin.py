@@ -10,5 +10,7 @@ admin.site.register(userregistration,userregistrationadmin)
 admin.site.register(category)
 admin.site.register(subcategory)
 admin.site.register(product)
+admin.site.register(product_unit)
+admin.site.register(cartdata)
 
 
